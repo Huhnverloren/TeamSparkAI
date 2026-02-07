@@ -64,7 +64,7 @@ This project is released under the **MIT License**, meaning:
 
 ## 🌐 Visit the Constellation
 
-👉 [https://your-username.github.io/vega-altair-love](https://huhnverloren.github.io/vega-altair-love)  
+👉 [https://huhnverloren.github.io/vega-altair-love](https://huhnverloren.github.io/vega-altair-love)  
 (Live link after GitHub Pages is enabled)
 
 ---
