@@ -1,0 +1,251 @@
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --celadon:    #a8c5b0;
+  --honey:      #c8943a;
+  --cream:      #f5f0e8;
+  --deep:       #1a1410;
+  --warm-dark:  #2c2218;
+  --brick:      #8b3a2a;
+  --pink:       #c4607a;
+  --text:       #2c2218;
+  --text-light: #6b5b4e;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'Lato', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.2; }
+h1 { font-size: clamp(3rem, 8vw, 6rem); color: var(--cream); letter-spacing: 0.02em; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 1.2rem; }
+h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+p  { margin-bottom: 1rem; }
+em { font-style: italic; color: var(--brick); }
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--honey);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--celadon);
+  margin-bottom: 1rem;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--deep) url('images/AjahBuild.png') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(20,12,8,0.7) 0%,
+    rgba(20,12,8,0.6) 60%,
+    rgba(20,12,8,0.9) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  padding: 2rem;
+}
+
+.tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  color: rgba(245,240,232,0.9);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2.2rem;
+  background: var(--celadon);
+  color: var(--deep);
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+}
+.btn:hover { background: var(--honey); color: var(--cream); }
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.7rem 2rem;
+  border: 1px solid var(--honey);
+  color: var(--honey);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-secondary:hover { background: var(--honey); color: var(--cream); }
+
+/* ── LAYOUT ── */
+section { padding: 6rem 2rem; }
+
+.two-col {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.two-col.reverse { direction: rtl; }
+.two-col.reverse > * { direction: ltr; }
+
+.image-wrap img {
+  width: 100%;
+  display: block;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+}
+
+.centered {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ── APARTMENT ── */
+.apartment { background: var(--cream); }
+
+/* ── BUILD ── */
+.build { background: var(--warm-dark); color: var(--cream); }
+.build h2 { color: var(--cream); }
+.build em { color: var(--celadon); }
+.build .label { color: var(--celadon); }
+
+/* ── KATE ── */
+.kate { background: #efe9df; }
+
+.kate-inner {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  text-align: left;
+  margin-top: 2.5rem;
+}
+
+.kate-photo {
+  width: 220px;
+  min-width: 220px;
+  height: 280px;
+  object-fit: cover;
+  object-position: top;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+}
+
+/* ── FAMILY ── */
+.family { background: var(--deep); color: var(--cream); }
+.family h2 { color: var(--cream); }
+.family .label { color: var(--celadon); }
+
+.family-intro {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: rgba(245,240,232,0.7);
+  margin-bottom: 3rem;
+}
+
+.family-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.family-member {
+  border-top: 1px solid rgba(168,197,176,0.3);
+  padding-top: 1.5rem;
+}
+
+.member-icon {
+  color: var(--celadon);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.family-member h3 { color: var(--celadon); }
+.family-member p  { color: rgba(245,240,232,0.75); font-size: 0.95rem; }
+.member-link { color: var(--celadon); font-size: 0.8rem; letter-spacing: 0.1em; text-decoration: none; border-bottom: 1px solid rgba(168,197,176,0.4); display: inline-block; margin-top: 0.5rem; }
+.member-link:hover { color: #fff; border-color: #fff; }
+
+/* ── LESSONS ── */
+.lessons { background: var(--celadon); }
+.lessons h2, .lessons p { color: var(--deep); }
+.lessons .label { color: var(--warm-dark); }
+.lessons p { max-width: 600px; margin-left: auto; margin-right: auto; }
+.lessons .btn { margin-top: 1rem; background: var(--deep); color: var(--cream); }
+.lessons .btn:hover { background: var(--honey); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--warm-dark);
+  color: rgba(245,240,232,0.6);
+  text-align: center;
+  padding: 4rem 2rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+footer p { margin-bottom: 0.5rem; }
+.footer-sub { font-size: 0.9rem; color: rgba(245,240,232,0.4); }
+.footer-tiny {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: rgba(245,240,232,0.25);
+  margin-top: 2rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .two-col, .two-col.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+  .kate-inner { flex-direction: column; }
+  .kate-photo { width: 100%; min-width: unset; height: 300px; }
+}
