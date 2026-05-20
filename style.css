@@ -335,7 +335,7 @@ footer p { margin-bottom: 0.5rem; }
 
 .archive-item--featured img {
   grid-row: 1 / 3;
-  height: 420px;
+  height: 580px;
   object-fit: cover;
 }
 
@@ -361,7 +361,7 @@ footer p { margin-bottom: 0.5rem; }
 
 .archive-item img {
   width: 100%;
-  height: 280px;
+  height: 400px;
   object-fit: cover;
   display: block;
   filter: brightness(0.82) sepia(0.15);
@@ -370,6 +370,11 @@ footer p { margin-bottom: 0.5rem; }
 
 .archive-item:hover img {
   filter: brightness(0.95) sepia(0);
+}
+
+.archive-item--contain img {
+  object-fit: contain;
+  background: var(--warm-dark);
 }
 
 .archive-caption {
