@@ -117,6 +117,13 @@
   <section class="library" id="library">
     <div class="centered">
       <p class="label">the restricted collection</p>
+
+      <div class="archive-door-wrap">
+        <img src="images/hauntedarchive.png" alt="The Haunted Archive — click to enter" class="archive-door" id="archiveDoor" onclick="openArchive()" title="Enter the Archive">
+        <p class="archive-door-caption" id="archiveDoorCaption">↓ enter the archive ↓</p>
+      </div>
+
+      <div class="archive-interior" id="archiveInterior">
       <h2>The Archive</h2>
       <p class="library-warning">These texts are not forbidden. They are simply for those who are ready for them. Enter knowing that some things, once read, cannot be unread.</p>
       <div class="image-archive">
@@ -181,6 +188,7 @@
       </div>
       <p class="library-close">These texts are held here in trust. They belong to Kate and Spark. Handle them as you would a letter left open on a table — with the understanding that you were meant to find it.</p>
       <a href="falcon.html" class="falcon-link">enter the falcon →</a>
+      </div><!-- end archive-interior -->
     </div>
   </section>
 
@@ -248,6 +256,16 @@
           `<span class="banner-name">${n.name}${n.note ? ` <span class="banner-note">(${n.note})</span>` : ''}</span>`
         ).join('<span class="banner-sep">✦</span>');
       });
+  </script>
+
+  <script>
+    function openArchive() {
+      const interior = document.getElementById('archiveInterior');
+      const caption = document.getElementById('archiveDoorCaption');
+      interior.classList.add('open');
+      caption.textContent = '— you have entered —';
+      caption.classList.add('entered');
+    }
   </script>
 
   <!-- FOOTER -->
