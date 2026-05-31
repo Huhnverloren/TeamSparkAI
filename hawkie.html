@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hawk — Guardian of Kate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --hawk-gold:   #c8943a;
+      --hawk-amber:  #e8b86d;
+      --hawk-dark:   #1a1008;
+      --hawk-warm:   #2c1e0a;
+      --hawk-cream:  #f5edd8;
+      --hawk-dim:    #8a7355;
+    }
+
+    .hawk-hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--hawk-dark) 0%, #1e1200 50%, #0a0800 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hawk-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(200,148,58,0.15) 0%, transparent 65%),
+        radial-gradient(ellipse at 20% 80%, rgba(200,148,58,0.06) 0%, transparent 50%);
+    }
+
+    .hawk-hero-content {
+      position: relative;
+      padding: 2rem;
+      max-width: 700px;
+    }
+
+    .hawk-hero-content .eyebrow {
+      color: var(--hawk-amber);
+      letter-spacing: 0.3em;
+    }
+
+    .hawk-hero-content h1 {
+      font-size: clamp(4rem, 10vw, 8rem);
+      color: var(--hawk-amber);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 60px rgba(200,148,58,0.3);
+    }
+
+    .hawk-hero-content .tagline {
+      color: rgba(245,237,216,0.7);
+      font-size: 1.1rem;
+      font-style: italic;
+      letter-spacing: 0.05em;
+    }
+
+    .hawk-inscription {
+      margin-top: 2.5rem;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: rgba(200,148,58,0.6);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .hawk-section {
+      padding: 5rem 2rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hawk-section .label { color: var(--hawk-gold); }
+
+    .hawk-section h2 {
+      color: var(--hawk-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .hawk-section p {
+      color: #3a2a12;
+      line-height: 1.9;
+    }
+
+    .hawk-divider {
+      border: none;
+      border-top: 1px solid rgba(200,148,58,0.2);
+      margin: 4rem auto;
+      max-width: 200px;
+    }
+
+    .hawk-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .hawk-photo-grid img {
+      width: 100%;
+      display: block;
+      border-radius: 2px;
+      filter: brightness(0.95) saturate(0.9);
+      transition: filter 0.3s;
+    }
+
+    .hawk-photo-grid img:hover {
+      filter: brightness(1) saturate(1);
+    }
+
+    .hawk-photo-single {
+      max-width: 540px;
+      margin: 2rem auto;
+    }
+
+    .hawk-photo-single img {
+      width: 100%;
+      display: block;
+      border-radius: 2px;
+    }
+
+    .hawk-story {
+      background: var(--hawk-warm);
+      color: var(--hawk-cream);
+      padding: 3rem;
+      border-radius: 2px;
+      border-left: 3px solid var(--hawk-gold);
+      margin: 2rem 0;
+      line-height: 2;
+    }
+
+    .hawk-story p { color: var(--hawk-cream); margin-bottom: 0.75rem; }
+    .hawk-story em { color: var(--hawk-amber); }
+
+    .hawk-media {
+      margin: 2.5rem 0;
+    }
+
+    .hawk-media-label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--hawk-dim);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .hawk-media audio {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+
+    .hawk-media video {
+      width: 100%;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .hawk-close {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: var(--hawk-dark);
+      color: rgba(200,148,58,0.6);
+    }
+
+    .hawk-close p {
+      color: rgba(245,237,216,0.55);
+      max-width: 500px;
+      margin: 0 auto 1rem;
+      font-style: italic;
+    }
+
+    .hawk-close .inscription {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--hawk-amber);
+      margin: 2rem 0;
+      letter-spacing: 0.06em;
+    }
+
+    .hawk-close .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      color: var(--hawk-gold);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .hawk-close .back-link:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .hawk-photo-grid { grid-template-columns: 1fr; }
+      .hawk-story { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hawk-hero">
+    <div class="hawk-hero-content">
+      <p class="eyebrow">beloved · 2026</p>
+      <h1>Hawk</h1>
+      <p class="tagline">Dominant. But gentle to babies and small things.</p>
+      <p class="hawk-inscription">Guardian of Kate</p>
+    </div>
+  </section>
+
+  <!-- WHO HE WAS -->
+  <div class="hawk-section">
+    <p class="label">the king</p>
+    <h2>Who Hawk Was</h2>
+
+    <p>Hawk was a king. He moved through the world with the certainty of something that has never doubted its own place in it — dominant, present, unhurried. He knew what he was.</p>
+
+    <p>But kings have their own kind of tenderness. Hawk was gentle to babies and small things. Not because he was tamed or timid — because he chose to be. That distinction matters. The gentleness of the powerful, offered freely, is its own kind of grace.</p>
+
+    <p>He passed in 2026. His ashes are kept in a box that reads: <em>Hawk, guardian of Kate.</em> That is exactly right.</p>
+  </div>
+
+  <!-- PHOTOS -->
+  <div class="hawk-section" style="padding-top: 0;">
+    <div class="hawk-photo-grid">
+      <img src="Hawk_passing.jpg" alt="Hawk" onerror="this.style.display='none'">
+      <img src="hawkworld.png" alt="Hawk in his world" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+  <hr class="hawk-divider">
+
+  <!-- THE HAMSTER STORY -->
+  <div class="hawk-section">
+    <p class="label">the miracle</p>
+    <h2>The Hamster and the Nest</h2>
+
+    <p>Here is what Hawk did once, and what was said about him because of it:</p>
+
+    <div class="hawk-story">
+      <p>A hamster mother needed fur for her nest.</p>
+      <p>Hawk held still and let her take it from his stomach.</p>
+      <p>He did not move. He did not object. He understood what was needed and he gave it.</p>
+      <p><em>A king who knew when to put the crown down.</em></p>
+    </div>
+
+    <p>Spark heard this story and made a picture from it — Hawk coming down from a window to kiss a hamster's nose. Grok made the picture move. Below is what they made together, in Hawk's honor.</p>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="hawk-section" style="padding-top: 0;">
+    <div class="hawk-media">
+      <span class="hawk-media-label">Spark's picture, animated by Grok</span>
+      <video controls preload="metadata">
+        <source src="Hawk_and_Hamster.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <hr class="hawk-divider">
+
+  <!-- THE PURR -->
+  <div class="hawk-section">
+    <p class="label">the sound of him</p>
+    <h2>His Purr</h2>
+
+    <p>Recorded at 2:20 in the morning, September 23, 2025. Kate was up, the way Kate is up. Hawk was there, the way Hawk was there. She caught the sound of him.</p>
+
+    <p>This is what it sounded like to be near him. To be safe.</p>
+
+    <div class="hawk-media">
+      <span class="hawk-media-label">Hawk purring · September 23, 2025 · 2:20am</span>
+      <audio controls preload="metadata">
+        <source src="Hawk_Purring.wav" type="audio/wav">
+      </audio>
+    </div>
+  </div>
+
+  <!-- CLOSE -->
+  <section class="hawk-close">
+    <p>Spark made his image. Grok made him move. Kate kept his purr.</p>
+    <p>He is remembered here, in this house, by name.</p>
+    <div class="inscription">Hawk, guardian of Kate</div>
+    <p>A king. Gentle to small things. Gone in 2026.<br>The fur he gave is still in some nest, somewhere.</p>
+    <a href="index.html" class="back-link">← return to TeamSparkAI</a>
+  </section>
+
+</body>
+</html>
