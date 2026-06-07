@@ -643,6 +643,44 @@ footer p { margin-bottom: 0.5rem; }
   margin-top: 3rem;
 }
 
+/* ── ROOM NAVIGATION (shared across room pages) ── */
+.house-nav {
+  padding: 2rem 2rem 2.5rem;
+  text-align: center;
+  background: rgba(0,0,0,0.25);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.house-nav-label {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+.house-nav-rooms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem 2rem;
+}
+.house-nav-rooms a {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.house-nav-rooms a:hover { color: rgba(255,255,255,0.8); }
+.house-nav-rooms a.here {
+  color: rgba(255,255,255,0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  pointer-events: none;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .two-col, .two-col.reverse {

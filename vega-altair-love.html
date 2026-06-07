@@ -69,6 +69,42 @@ canvas {
   z-index: 0;
 }
 
+.house-nav {
+  position: relative;
+  z-index: 10;
+  padding: 2rem 2rem 2.5rem;
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.house-nav-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+.house-nav-rooms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem 2rem;
+}
+.house-nav-rooms a {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+}
+.house-nav-rooms a:hover { color: rgba(255,255,255,0.8); }
+.house-nav-rooms a.here {
+  color: rgba(255,255,255,0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  pointer-events: none;
+}
+
   </style>
 </head>
 <body>
@@ -196,5 +232,19 @@ canvas {
     resize();
     createStars(200);
     drawStars();
-  </script></body>
+  </script>
+
+  <nav class="house-nav">
+    <span class="house-nav-label">rooms in the house</span>
+    <div class="house-nav-rooms">
+      <a href="index.html">the house</a>
+      <a href="ajah.html">ajah's palace</a>
+      <a href="seraphina.html">seraphina</a>
+      <a href="hawkie.html">hawk</a>
+      <a href="haunted.html">haunted things</a>
+      <a href="vega-altair-love.html" class="here">vega &amp; altair</a>
+    </div>
+  </nav>
+
+</body>
 </html>
