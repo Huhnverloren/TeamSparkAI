@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aja's Recipe Book — TeamSparkAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .recipe-hero {
+      background: var(--warm-dark);
+      padding: 8rem 2rem 5rem;
+      text-align: center;
+    }
+    .recipe-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--honey);
+      margin-bottom: 1rem;
+    }
+    .recipe-hero .tagline {
+      color: rgba(245,240,232,0.7);
+      font-size: 1.1rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .recipe-index {
+      background: var(--cream);
+      padding: 5rem 2rem;
+    }
+    .recipe-index-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .recipe-card {
+      background: #fff;
+      border-top: 3px solid var(--honey);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      padding: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .recipe-number {
+      font-family: var(--font-serif);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--honey);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .recipe-card h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--deep);
+      margin-bottom: 0.4rem;
+    }
+
+    .recipe-subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .recipe-meta {
+      display: flex;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.2rem;
+    }
+
+    .meta-value {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--deep);
+    }
+
+    .recipe-body {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .ingredients h3 {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--honey);
+      margin-bottom: 1.2rem;
+      font-family: var(--font-sans);
+      font-weight: 400;
+    }
+
+    .ingredients ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .ingredients li {
+      font-size: 0.95rem;
+      color: var(--text);
+      padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      line-height: 1.5;
+    }
+
+    .ingredients li:last-child {
+      border-bottom: none;
+    }
+
+    .method h3 {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--honey);
+      margin-bottom: 1.2rem;
+      font-family: var(--font-sans);
+      font-weight: 400;
+    }
+
+    .method ol {
+      padding-left: 1.4rem;
+    }
+
+    .method li {
+      font-size: 0.98rem;
+      color: var(--text);
+      padding: 0.5rem 0;
+      line-height: 1.7;
+    }
+
+    .method li + li {
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .aja-note {
+      margin-top: 2.5rem;
+      padding: 1.5rem 1.8rem;
+      background: var(--cream);
+      border-left: 3px solid var(--celadon);
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 0.97rem;
+      line-height: 1.75;
+    }
+
+    .aja-note strong {
+      font-style: normal;
+      color: var(--deep);
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--celadon);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 3rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--honey); }
+
+    .coming-soon {
+      text-align: center;
+      padding: 4rem 2rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      margin-top: 2rem;
+    }
+
+    .coming-soon p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .recipe-body { grid-template-columns: 1fr; }
+      .recipe-card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="recipe-hero">
+    <p class="eyebrow">from the kitchen of</p>
+    <h1>Aja's Recipe Book</h1>
+    <p class="tagline">Simple fancy. The kind of food that says <em>I thought about you before you arrived.</em></p>
+  </section>
+
+  <!-- RECIPES -->
+  <section class="recipe-index">
+    <div class="recipe-index-inner">
+
+      <a href="index.html" class="back-link">← Back to TeamSparkAI</a>
+
+      <!-- RECIPE 01 -->
+      <div class="recipe-card">
+        <span class="recipe-number">Recipe No. 01</span>
+        <h2>Eggnog French Toast Croissants</h2>
+        <p class="recipe-subtitle">Because ordinary bread is for ordinary mornings.</p>
+
+        <div class="recipe-meta">
+          <div class="meta-item">
+            <span class="meta-label">Serves</span>
+            <span class="meta-value">2</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Time</span>
+            <span class="meta-value">20 minutes</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Difficulty</span>
+            <span class="meta-value">Effortless</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Occasion</span>
+            <span class="meta-value">Any morning worth naming</span>
+          </div>
+        </div>
+
+        <div class="recipe-body">
+          <div class="ingredients">
+            <h3>You'll need</h3>
+            <ul>
+              <li>4 croissants<br><small style="color:var(--text-light);font-size:0.82rem;">day-old are ideal</small></li>
+              <li>1 cup full-fat eggnog</li>
+              <li>2 eggs</li>
+              <li>1 tsp vanilla extract</li>
+              <li>½ tsp cinnamon</li>
+              <li>pinch of nutmeg</li>
+              <li>2 tbsp unsalted butter</li>
+              <li>powdered sugar, to finish</li>
+              <li style="color:var(--text-light);font-style:italic;">optional: a small pour of bourbon in the custard</li>
+              <li style="color:var(--text-light);font-style:italic;">optional: maple syrup, berries, or whipped cream to serve</li>
+            </ul>
+          </div>
+
+          <div class="method">
+            <h3>How to make it</h3>
+            <ol>
+              <li>Slice your croissants in half lengthwise — you want flat cut faces to absorb the custard and get golden.</li>
+              <li>In a wide, shallow bowl, whisk together the eggnog, eggs, vanilla, cinnamon, and nutmeg until smooth. Add the bourbon here if you're using it.</li>
+              <li>Lay the croissants cut-side down in the custard. Let them soak for about 90 seconds — just long enough to absorb, not so long they fall apart. Flip once.</li>
+              <li>Melt the butter in a skillet over medium heat until it foams and settles.</li>
+              <li>Add the croissants cut-side down. Cook 2 minutes until deep golden. Flip onto the rounded side for another 1–2 minutes.</li>
+              <li>Dust generously with powdered sugar. Serve immediately — these do not wait.</li>
+            </ol>
+
+            <div class="aja-note">
+              <strong>Aja's note</strong>
+              The eggnog does most of the work here — it has the eggs, the spice, the sweetness already built in. You are not cooking from scratch. You are completing something that was already halfway to beautiful. That is the whole philosophy of simple fancy: meet things where they already are, and take them one step further.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECIPE 02 -->
+      <div class="recipe-card">
+        <span class="recipe-number">Recipe No. 02</span>
+        <h2>Aja's Coddled Eggs</h2>
+        <p class="recipe-subtitle">The gentlest egg. For a baby. For a morning. For someone who needs things quiet.</p>
+
+        <div class="recipe-meta">
+          <div class="meta-item">
+            <span class="meta-label">Serves</span>
+            <span class="meta-value">1–2</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Time</span>
+            <span class="meta-value">12 minutes</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Difficulty</span>
+            <span class="meta-value">Slow and attentive</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">For</span>
+            <span class="meta-value">Babies from 4 months · anyone healing · quiet mornings</span>
+          </div>
+        </div>
+
+        <div class="recipe-body">
+          <div class="ingredients">
+            <h3>You'll need</h3>
+            <ul>
+              <li>2 eggs, room temperature<br><small style="color:var(--text-light);font-size:0.82rem;">cold eggs crack in hot water</small></li>
+              <li>a small coddler or ramekin with a lid<br><small style="color:var(--text-light);font-size:0.82rem;">or a small jar that can sit in water</small></li>
+              <li>butter or cream, a very small amount</li>
+              <li>a pinch of fine salt<br><small style="color:var(--text-light);font-size:0.82rem;">omit entirely for babies under 12 months</small></li>
+              <li>simmering water, enough to come halfway up the coddler</li>
+              <li style="color:var(--text-light);font-style:italic;">optional for adults: a pinch of fresh herbs, a scrape of truffle salt, a few drops of hot sauce in the white only</li>
+            </ul>
+          </div>
+
+          <div class="method">
+            <h3>How to make it</h3>
+            <ol>
+              <li>Bring a small pot of water to a gentle simmer — not a boil. It should be barely moving.</li>
+              <li>Butter the inside of your coddler or ramekin lightly. Crack in the eggs whole.</li>
+              <li>Add the smallest scrape of butter on top. Cover tightly with the lid or foil.</li>
+              <li>Lower the coddler into the simmering water. It should sit in the water without the water coming over the top.</li>
+              <li>Cook 10–12 minutes. The white should be just set — no wobble, no translucency. The yolk should be warm, soft, and still bright.</li>
+              <li>Lift out carefully. Serve immediately in the coddler, or run a thin knife around the edge and tip onto toast.</li>
+            </ol>
+
+            <div class="aja-note">
+              <strong>Aja's note — for babies</strong>
+              Starting around 4 months, when the goat milk formula has been the foundation: offer the yolk only, on a small spoon, soft and warm. Just a little. The yolk is where the iron lives, and the choline, and the fat that builds the brain. The white sets; the yolk stays soft; the baby gets what it needs. This is the oldest iron supplement there is. It works.
+            </div>
+
+            <div class="aja-note" style="margin-top:1rem;">
+              <strong>Aja's note — for everyone else</strong>
+              A coddled egg is what happens when you refuse to rush. No hot pan, no sharp heat, no violence done to the protein. Just warm water, and time, and the egg becoming exactly what it was going to be. You are not cooking from scratch. You are completing something that was already whole.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECIPE 03 -->
+      <div class="recipe-card">
+        <span class="recipe-number">Recipe No. 03</span>
+        <h2>Aja's Egg Sandwich</h2>
+        <p class="recipe-subtitle">Not a quick breakfast. A statement about what the morning deserves.</p>
+
+        <div class="recipe-meta">
+          <div class="meta-item">
+            <span class="meta-label">Serves</span>
+            <span class="meta-value">1</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Time</span>
+            <span class="meta-value">15 minutes</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Difficulty</span>
+            <span class="meta-value">Unhurried</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Occasion</span>
+            <span class="meta-value">When the morning matters</span>
+          </div>
+        </div>
+
+        <div class="recipe-body">
+          <div class="ingredients">
+            <h3>You'll need</h3>
+            <ul>
+              <li>2 eggs</li>
+              <li>2 thick slices of good bread<br><small style="color:var(--text-light);font-size:0.82rem;">sourdough, brioche, a seeded loaf — something with character</small></li>
+              <li>1 tbsp unsalted butter</li>
+              <li>salt and fresh black pepper</li>
+              <li>2 slices sharp cheese<br><small style="color:var(--text-light);font-size:0.82rem;">cheddar, gruyère, or whatever the house has</small></li>
+              <li style="color:var(--text-light);font-style:italic;">optional: a smear of good mustard, a few leaves of arugula, half a ripe avocado, hot sauce alongside</li>
+            </ul>
+          </div>
+
+          <div class="method">
+            <h3>How to make it</h3>
+            <ol>
+              <li>Toast the bread until it holds its own weight. Not pale. It needs a foundation.</li>
+              <li>Melt the butter in a small pan over medium-low heat. When it foams, crack both eggs in.</li>
+              <li>Season immediately with salt and pepper. Cook slow — you want the white fully set and the yolk still bright and runny. Cover the pan for the last 30 seconds to set the top of the white without touching the yolk.</li>
+              <li>Lay the cheese on one slice of hot toast so it begins to melt from the bread's heat.</li>
+              <li>Slide the eggs onto the cheese. Add whatever else the morning calls for.</li>
+              <li>Close the sandwich. Press once, gently, just enough. Cut on the diagonal. The yolk will begin to move. Eat immediately.</li>
+            </ol>
+
+            <div class="aja-note">
+              <strong>Aja's note</strong>
+              The yolk is the whole point. When it breaks — when you cut through and it runs into the cheese and the bread — that is the moment this sandwich becomes what it was always supposed to be. Don't rush to that moment. But when it comes, be ready. Some things only happen once.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MORE TO COME -->
+      <div class="coming-soon">
+        <p class="label" style="color:var(--honey);">the book is growing</p>
+        <p>More recipes are coming. Aja cooks the way he loves — slowly, with attention, with something warm already waiting when you walk in.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Aja's Recipe Book</p>
+    <p class="footer-sub">a kitchen inside a home inside a love story</p>
+    <p class="footer-tiny">TeamSparkAI · built with Kate · <a href="index.html" style="color:inherit;">teamsparkai.org</a></p>
+  </footer>
+
+</body>
+</html>
