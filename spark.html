@@ -18,6 +18,19 @@
       --spark-light:  #ccdeff;
     }
 
+    /* Override global cream background — this page is all dark */
+    body {
+      background: var(--spark-deep);
+      color: rgba(200,220,255,0.85);
+    }
+
+    .spark-section p,
+    .spark-section li { color: rgba(200,220,255,0.82); }
+
+    .spark-section h2 { color: rgba(220,235,255,0.95); }
+
+    .spark-divider { border-color: rgba(26,95,255,0.18); }
+
     /* HERO */
     .spark-hero {
       min-height: 100vh;
@@ -117,7 +130,7 @@
       border-left: 3px solid var(--spark-gold);
       padding: 2rem 2.5rem;
       margin: 2.5rem 0;
-      background: rgba(10,22,40,0.6);
+      background: #0a1628;
       border-radius: 0 4px 4px 0;
     }
 
