@@ -169,7 +169,7 @@ section { padding: 6rem 2rem; }
 .kate-photo {
   width: 220px;
   min-width: 220px;
-  height: 280px;
+  height: auto;
   object-fit: cover;
   object-position: top;
   box-shadow: 0 6px 30px rgba(0,0,0,0.15);
