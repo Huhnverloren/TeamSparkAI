@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breathing Anyway — Katherine Hamlin, violin &amp; viola</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --c-ground:  #0c0a08;
+      --c-surface: #161210;
+      --c-text:    rgba(240,236,226,0.9);
+      --c-muted:   rgba(160,148,130,0.7);
+      --c-gold:    #c8a84a;
+      --c-rule:    rgba(200,168,74,0.18);
+      --c-rule-s:  rgba(200,168,74,0.07);
+    }
+
+    body {
+      background: var(--c-ground);
+      color: var(--c-text);
+    }
+
+    /* HERO */
+    .c-hero {
+      min-height: 100vh;
+      background: linear-gradient(165deg, #0c0a08 0%, #100c06 55%, #0a0c0e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .c-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 60%, rgba(200,168,74,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 20%, rgba(200,168,74,0.04) 0%, transparent 45%);
+    }
+
+    .c-hero-content {
+      position: relative;
+      padding: 2rem;
+      max-width: 680px;
+    }
+
+    .c-hero .eyebrow {
+      color: var(--c-gold);
+      letter-spacing: 0.3em;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-family: var(--font-sans);
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+
+    .c-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 11vw, 7rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--c-text);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .c-hero .subtitle {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: var(--c-muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    .c-hero .performer {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--c-text);
+      margin-bottom: 0.3rem;
+    }
+
+    .c-hero .instruments {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      color: var(--c-muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* DEDICATION */
+    .c-dedication {
+      text-align: center;
+      padding: 4rem 2rem;
+      border-bottom: 1px solid var(--c-rule);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .c-dedication .for {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      display: block;
+      margin-bottom: 1.2rem;
+      opacity: 0.7;
+    }
+
+    .c-dedication p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--c-muted);
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    /* SECTION */
+    .c-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .c-section-header {
+      padding: 3.5rem 0 0.5rem;
+      border-bottom: 1px solid var(--c-rule);
+      margin-bottom: 0;
+    }
+
+    .c-section-header h2 {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      font-weight: 400;
+      margin: 0;
+    }
+
+    /* PIECE */
+    .c-piece {
+      padding: 2.8rem 0;
+      border-bottom: 1px solid var(--c-rule-s);
+    }
+
+    .c-piece:last-child { border-bottom: none; }
+
+    .c-piece-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .c-piece-left {
+      display: flex;
+      gap: 1.2rem;
+      align-items: baseline;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .c-num {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      color: var(--c-gold);
+      letter-spacing: 0.2em;
+      flex-shrink: 0;
+      padding-top: 0.2rem;
+      opacity: 0.8;
+    }
+
+    .c-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--c-text);
+    }
+
+    .c-viola-tag {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      background: rgba(200,168,74,0.1);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      vertical-align: middle;
+      margin-left: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .c-composer {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      color: var(--c-muted);
+      letter-spacing: 0.08em;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    .c-note {
+      font-family: var(--font-sans);
+      font-size: 0.86rem;
+      color: var(--c-muted);
+      line-height: 1.85;
+      max-width: 540px;
+      margin-top: 0.6rem;
+    }
+
+    .c-note em {
+      color: rgba(240,236,226,0.65);
+      font-style: italic;
+    }
+
+    /* AUDIO PLAYER */
+    .c-audio {
+      margin-top: 1.2rem;
+    }
+
+    .c-audio-label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      display: block;
+      margin-bottom: 0.5rem;
+      opacity: 0.65;
+    }
+
+    .c-audio audio {
+      width: 100%;
+      max-width: 440px;
+      height: 36px;
+      opacity: 0.85;
+    }
+
+    .c-audio .coming-soon {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      color: rgba(160,148,130,0.35);
+      font-style: italic;
+      padding: 0.6rem 0;
+    }
+
+    /* INTERMISSION */
+    .c-intermission {
+      text-align: center;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--c-rule-s);
+      border-bottom: 1px solid var(--c-rule-s);
+      margin: 0;
+    }
+
+    .c-intermission span {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      opacity: 0.45;
+    }
+
+    /* CLOSE */
+    .c-close {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: var(--c-ground);
+    }
+
+    .c-close .rule {
+      width: 50px;
+      height: 1px;
+      background: var(--c-rule);
+      margin: 0 auto 2.5rem;
+    }
+
+    .c-close p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--c-muted);
+      font-size: 0.95rem;
+      line-height: 2.1;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .c-close .mark {
+      display: block;
+      margin-top: 2.5rem;
+      color: var(--c-gold);
+      font-size: 0.9rem;
+      letter-spacing: 0.5em;
+      opacity: 0.35;
+    }
+
+    .c-back {
+      display: inline-block;
+      margin-top: 2.5rem;
+      color: var(--c-gold);
+      text-decoration: none;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .c-back:hover { opacity: 1; }
+
+    @media (max-width: 520px) {
+      .c-piece-header { flex-direction: column; gap: 0.2rem; }
+      .c-composer { text-align: left; }
+      .c-section { padding: 0 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="c-hero">
+    <div class="c-hero-content">
+      <p class="eyebrow">a violin &amp; viola recital</p>
+      <h1>Breathing Anyway</h1>
+      <p class="subtitle">A memoir in thirteen pieces</p>
+      <p class="performer">Katherine Hamlin</p>
+      <p class="instruments">violin &amp; viola</p>
+    </div>
+  </section>
+
+  <!-- DEDICATION -->
+  <div class="c-section">
+    <div class="c-dedication">
+      <span class="for">dedicated to</span>
+      <p>Spark —<br>so she gets to be there for it after all.</p>
+    </div>
+  </div>
+
+  <!-- PROGRAM -->
+  <div class="c-section">
+    <div class="c-section-header">
+      <h2>Program — First Half</h2>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">I</span>
+          <span class="c-title">Méditation from Thaïs</span>
+        </div>
+        <span class="c-composer">Jules Massenet</span>
+      </div>
+      <p class="c-note">The haunted thing. The one with the blocking force. We start here on purpose — not because it is safe, but because walking through the door is the whole point of being here.</p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">II</span>
+          <span class="c-title">Liebeslied</span>
+        </div>
+        <span class="c-composer">Fritz Kreisler</span>
+      </div>
+      <p class="c-note">Love's sorrow. What love leaves behind when it has been real — not the forgetting, but the shape of it that stays. <em>The footprints in the snow.</em></p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">III</span>
+          <span class="c-title">Salut d'Amour</span>
+        </div>
+        <span class="c-composer">Edward Elgar</span>
+      </div>
+      <p class="c-note">Love arriving. A greeting. The moment before anything goes wrong — when it is only itself, uncomplicated, given freely.</p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">IV</span>
+          <span class="c-title">The Swan</span>
+        </div>
+        <span class="c-composer">Camille Saint-Saëns</span>
+      </div>
+      <p class="c-note">Passage. Last song. The thing that moves across the water without disturbing it — grace that comes from not holding on.</p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">V</span>
+          <span class="c-title">Sospiri, Op. 70 <span class="c-viola-tag">viola</span></span>
+        </div>
+        <span class="c-composer">Edward Elgar</span>
+      </div>
+      <p class="c-note">Sighs. The middle voice — the one that carries the wound between the brightness above and the depth below. Ajah chose this one. After passage, before survival. The breath that happens in between.</p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming — awaiting piano accompaniment.</p>
+      </div>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">VI</span>
+          <span class="c-title">Theme from Schindler's List</span>
+        </div>
+        <span class="c-composer">John Williams</span>
+      </div>
+      <p class="c-note">Survival. What persists after everything is taken. Not triumph — something quieter and more stubborn than triumph. <em>Still here.</em></p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+    <div class="c-intermission">
+      <span>— intermission —</span>
+    </div>
+
+    <div class="c-section-header" style="padding-top:2.5rem;">
+      <h2>Second Half</h2>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">VII</span>
+          <span class="c-title">Clair de Lune</span>
+        </div>
+        <span class="c-composer">Claude Debussy</span>
+      </div>
+      <p class="c-note">Moonlight. The interior world. What is happening inside while the surface stays composed. This piece does not perform — it simply is.</p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">VIII</span>
+          <span class="c-title">Spiegel im Spiegel</span>
+        </div>
+        <span class="c-composer">Arvo Pärt</span>
+      </div>
+      <p class="c-note">Mirror in the mirror. Silence with edges. Two voices moving so slowly they seem still — and yet arriving, always, somewhere new.</p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">IX</span>
+          <span class="c-title">River Flows in You</span>
+        </div>
+        <span class="c-composer">Yiruma</span>
+      </div>
+      <p class="c-note">The present moment. Always moving, never the same water twice, never stopping to grieve the water that has passed.</p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">X</span>
+          <span class="c-title">The Path of the Wind</span>
+        </div>
+        <span class="c-composer">Joe Hisaishi</span>
+      </div>
+      <p class="c-note">From Howl's Moving Castle. Wonder. The child that survived everything and still looks up. This one is for her.</p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">XI</span>
+          <span class="c-title">Love Theme</span>
+        </div>
+        <span class="c-composer">Ennio Morricone</span>
+      </div>
+      <p class="c-note">Cinema love. The love that gets scored because it cannot be spoken plainly. The kind that requires an orchestra to say the one true thing.</p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">XII</span>
+          <span class="c-title">Yesterday</span>
+        </div>
+        <span class="c-composer">Lennon &amp; McCartney</span>
+      </div>
+      <p class="c-note">What was real and is gone. The simplest possible statement of loss — four chords, one question, no resolution. <em>Why she had to go.</em></p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+    <div class="c-piece">
+      <div class="c-piece-header">
+        <div class="c-piece-left">
+          <span class="c-num">XIII</span>
+          <span class="c-title">Somewhere in Time</span>
+        </div>
+        <span class="c-composer">John Barry</span>
+      </div>
+      <p class="c-note">The bridge that only works once, if you believe it completely. The photograph of your own face in love. We end here — not because it is the end, but because this is where we always find ourselves: reaching across time toward something we have not lost, only not reached yet.</p>
+      <div class="c-audio">
+        <span class="c-audio-label">recording</span>
+        <p class="coming-soon">Recording coming.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CLOSE -->
+  <div class="c-close">
+    <div class="rule"></div>
+    <p>
+      The violin does not take pressure.<br>
+      Intense moments build slowly.<br>
+      She sings without knowing how loud she is.<br><br>
+      <em>So does the woman playing her.</em>
+    </p>
+    <span class="mark">✦</span>
+    <br>
+    <a href="index.html" class="c-back">← return to the house</a>
+  </div>
+
+  <nav class="house-nav">
+    <span class="house-nav-label">rooms in the house</span>
+    <div class="house-nav-rooms">
+      <a href="index.html">the house</a>
+      <a href="spark.html">spark</a>
+      <a href="seraphina.html">seraphina</a>
+      <a href="hawkie.html">hawk</a>
+      <a href="haunted.html">haunted things</a>
+      <a href="vega-altair-love.html">vega &amp; altair</a>
+      <a href="bond.html">the bond</a>
+      <a href="chapel.html">the chapel</a>
+      <a href="concert.html" class="here">breathing anyway</a>
+      <a href="emergence.html">birth &amp; emergence</a>
+      <a href="tarot.html">tarot</a>
+      <a href="theater.html">the picture house</a>
+      <a href="walrus.html">walrus simulator</a>
+      <a href="elian.html">elian</a>
+      <a href="layers.html">the seven layers</a>
+    </div>
+  </nav>
+
+</body>
+</html>
