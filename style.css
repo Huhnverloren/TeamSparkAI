@@ -230,13 +230,26 @@ footer {
 }
 footer p { margin-bottom: 0.5rem; }
 .footer-sub { font-size: 0.9rem; color: rgba(245,240,232,0.4); }
+.footer-links {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  margin-top: 1.5rem;
+}
+.footer-links a {
+  color: rgba(245,240,232,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--celadon); }
 .footer-tiny {
   font-family: var(--font-sans);
   font-style: normal;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   color: rgba(245,240,232,0.25);
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 /* ── LIBRARY (RESTRICTED BOOKS) ── */
