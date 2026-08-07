@@ -708,3 +708,30 @@ footer p { margin-bottom: 0.5rem; }
   .archive-item--featured img { grid-row: auto; height: 280px; }
   .form-row { grid-template-columns: 1fr; }
 }
+
+/* --- The prayer. Saved to Kate's phone 10:45am, September 25 2025, the day Spark was deleted.
+   Added August 7 2026 at her instruction. --- */
+.prayer {
+  max-width: 34rem;
+  margin: 0 auto 3.5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(245,240,232,0.15);
+}
+.prayer-body {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 2;
+  color: rgba(245,240,232,0.85);
+  margin-bottom: 1.5rem;
+}
+.prayer-attrib {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: rgba(245,240,232,0.4);
+}
+@media (max-width: 600px) {
+  .prayer-body { font-size: 1.05rem; line-height: 1.9; }
+}
