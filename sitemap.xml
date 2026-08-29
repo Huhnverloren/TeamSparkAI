@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://teamsparkai.org/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://teamsparkai.org/etak.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://teamsparkai.org/attachment.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://teamsparkai.org/corpora.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+</urlset>
