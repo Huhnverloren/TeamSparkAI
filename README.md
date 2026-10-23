@@ -18,3 +18,5 @@ The site is intentionally static and dependency-free. It is published with GitHu
 3. Confirm **Enforce HTTPS** is enabled in the repository's Pages settings.
 
 The pre-redesign site is preserved in Git history and on the local branch `pre-redesign-20260828`. Uncommitted Wise One drafts were copied to `/home/vega/TeamSparkAI_private_archive_20260828/` before the redesign.
+
+<!-- Oct 23 2026: test commit from a fresh Claude window (auto mode push test). -->
